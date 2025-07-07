@@ -1,0 +1,17 @@
+Metadata-Version: 2.4
+Name: research-image-retrieval-project
+Version: 0.0.1
+Summary: Refactor code by LLM
+Author-email: Makoto Hirano <makoto.hirano.ar@hitachi.com>
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+Requires-Dist: base==0.0.0
+Requires-Dist: lmdb==1.6.2
+Requires-Dist: matplotlib==3.10.3
+Requires-Dist: numpy==2.3.1
+Requires-Dist: pandas==2.3.0
+Requires-Dist: pillow==11.3.0
+Requires-Dist: six==1.17.0
+Requires-Dist: torch==2.7.1
+Requires-Dist: torchvision==0.22.1
+Requires-Dist: tqdm==4.67.1

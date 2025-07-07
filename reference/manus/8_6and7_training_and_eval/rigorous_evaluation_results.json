@@ -1,0 +1,28 @@
+{
+  "config": {
+    "batch_size": 16,
+    "output_dim": 512,
+    "num_classes": 50,
+    "test_samples": 500,
+    "num_workers": 0
+  },
+  "device": "cpu",
+  "evaluation_date": "2025-06-13T21:10:05.534361",
+  "methods_evaluated": [
+    "adaptive"
+  ],
+  "results": {
+    "adaptive": {
+      "method": "adaptive",
+      "test_loss": 0.06740458671765737,
+      "test_accuracy": 98.0,
+      "num_samples": 500,
+      "retrieval_metrics": {
+        "mAP": 0.7856702208518982,
+        "P@1": 0.0,
+        "P@5": 0.8,
+        "P@10": 0.9000000000000002
+      }
+    }
+  }
+}

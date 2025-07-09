@@ -36,7 +36,7 @@ echo "Base LR: $BASE_LR"
 echo ""
 
 # 実際の学習コマンド
-python multi_model_train.py \
+python multi_model_train_modified.py \
   --model $MODEL \
   --backbone $BACKBONE \
   --batch_size $BATCH_SIZE \
@@ -57,11 +57,11 @@ echo ""
 echo "Alternative configurations:"
 echo ""
 echo "# ResNet-101 with larger reduction dimension:"
-echo "python multi_model_train.py --model cvnet --backbone resnet101 --resnet_depth 101 --reduction_dim 1024 --batch_size 16 --num_epochs 40"
+echo "python multi_model_train_modified.py --model cvnet --backbone resnet101 --resnet_depth 101 --reduction_dim 1024 --batch_size 16 --num_epochs 40"
 echo ""
 echo "# Smaller model for faster training:"
-echo "python multi_model_train.py --model cvnet --backbone resnet50 --resnet_depth 50 --reduction_dim 256 --batch_size 64 --num_epochs 20"
+echo "python multi_model_train_modified.py --model cvnet --backbone resnet50 --resnet_depth 50 --reduction_dim 256 --batch_size 64 --num_epochs 20"
 echo ""
 echo "# High-performance configuration:"
-echo "python multi_model_train.py --model cvnet --backbone resnet50 --resnet_depth 50 --reduction_dim 512 --base_lr 0.02 --batch_size 32 --num_epochs 60"
+echo "python multi_model_train_modified.py --model cvnet --backbone resnet50 --resnet_depth 50 --reduction_dim 512 --base_lr 0.02 --batch_size 32 --num_epochs 60"
 

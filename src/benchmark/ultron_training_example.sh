@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ULTRON学習用の設定例
-# multi_model_train.pyを使用してULTRONモデルを学習するためのスクリプト
+# multi_model_train_modified.pyを使用してULTRONモデルを学習するためのスクリプト
 
 echo "=== ULTRON Training Configuration Example ==="
 
@@ -42,7 +42,7 @@ echo "Image Size: $IMSIZE"
 # Python実行コマンドの例
 echo ""
 echo "=== Example Python Command ==="
-echo "python multi_model_train.py \\"
+echo "python multi_model_train_modified.py \\"
 echo "  --model $MODEL \\"
 echo "  --backbone $BACKBONE \\"
 echo "  --batch_size $BATCH_SIZE \\"
@@ -61,6 +61,26 @@ echo "  --save_freq $SAVE_FREQ \\"
 echo "  --comment $COMMENT \\"
 echo "  --distributed"
 
+python multi_model_train_modified.py \
+  --model "$MODEL" \
+  --backbone "$BACKBONE" \
+  --batch_size "$BATCH_SIZE" \
+  --num_epochs "$NUM_EPOCHS" \
+  --embed_dim "$EMBED_DIM" \
+  --rho "$RHO" \
+  --base_lr "$BASE_LR" \
+  --final_lr "$FINAL_LR" \
+  --warmup_epochs "$WARMUP_EPOCHS" \
+  --imsize "$IMSIZE" \
+  --seed "$SEED" \
+  --device "$DEVICE" \
+  --num_workers "$NUM_WORKERS" \
+  --val_epoch "$VAL_EPOCH" \
+  --save_freq "$SAVE_FREQ" \
+  --comment "$COMMENT" \
+  --distributed
+
+
 echo ""
 echo "=== Notes ==="
 echo "1. ULTRONモデルは自動的にAdamW(5epoch) → SGD(35epoch)の最適化戦略を使用します"
@@ -71,7 +91,7 @@ echo "5. MadaCos損失のρパラメータは論文設定の0.04を使用しま�
 
 echo ""
 echo "=== SPCA Training Example (for comparison) ==="
-echo "python multi_model_train.py \\"
+echo "python multi_model_train_modified.py \\"
 echo "  --model spca \\"
 echo "  --backbone resnet50 \\"
 echo "  --batch_size 32 \\"

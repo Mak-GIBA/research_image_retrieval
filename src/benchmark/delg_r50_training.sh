@@ -41,16 +41,15 @@ echo ""
 python multi_model_train_modified.py \
     --model $MODEL \
     --backbone $BACKBONE \
-    --batch_size $BATCH_SIZE \
-    --num_epochs $NUM_EPOCHS \
-    --resnet_depth $RESNET_DEPTH \
-    --local_dim $LOCAL_DIM \
-    --global_dim $GLOBAL_DIM \
-    --base_lr $BASE_LR \
-    --final_lr $FINAL_LR \
-    --warmup_epochs $WARMUP_EPOCHS \
-    --warmup_lr $WARMUP_LR \
-    --weight_decay $WEIGHT_DECAY \
+    --batch-size $BATCH_SIZE \
+    --num-epochs $NUM_EPOCHS \
+    --local-dim $LOCAL_DIM \
+    --outputdim $GLOBAL_DIM \
+    --base-lr $BASE_LR \
+    --final-lr $FINAL_LR \
+    --warmup-epochs $WARMUP_EPOCHS \
+    --warmup-lr $WARMUP_LR \
+    --weight-decay $WEIGHT_DECAY \
     --momentum $MOMENTUM \
     --comment $COMMENT \
     --distributed \

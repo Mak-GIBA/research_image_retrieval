@@ -10,7 +10,7 @@ echo ""
 # 利用可能なモデル一覧
 MODELS=(
     "gem_r50"
-    "gem_r101" 
+    "gem_r101"
     "delg_r50"
     "delg_r101"
     "token_r50"
@@ -53,7 +53,7 @@ list_models() {
     echo "========================"
     for i in "${!MODELS[@]}"; do
         model="${MODELS[$i]}"
-        script_file="training_scripts/${model}_training.sh"
+        script_file="${model}_training.sh"
         if [ -f "$script_file" ]; then
             status="✓ Available"
         else
@@ -66,21 +66,21 @@ list_models() {
 # 特定のモデルを学習
 train_model() {
     local model_name="$1"
-    local script_file="training_scripts/${model_name}_training.sh"
-    
+    local script_file="${model_name}_training.sh"
+
     if [ ! -f "$script_file" ]; then
         echo "Error: Training script not found for model '$model_name'"
         echo "Expected: $script_file"
         return 1
     fi
-    
+
     echo "Starting training for model: $model_name"
     echo "Script: $script_file"
     echo "----------------------------------------"
-    
+
     # 実行スクリプトを呼び出し
     bash "$script_file"
-    
+
     if [ $? -eq 0 ]; then
         echo "✓ Training completed successfully for $model_name"
     else
@@ -94,33 +94,33 @@ train_all_models() {
     echo "Starting training for all Table 1 models..."
     echo "This will take a very long time!"
     echo ""
-    
+
     read -p "Are you sure you want to continue? (y/N): " -n 1 -r
     echo
     if [[ ! $REPLY =~ ^[Yy]$ ]]; then
         echo "Training cancelled."
         return 1
     fi
-    
+
     local failed_models=()
-    
+
     for model in "${MODELS[@]}"; do
         echo ""
         echo "=========================================="
         echo "Training model: $model"
         echo "=========================================="
-        
+
         if train_model "$model"; then
             echo "✓ $model training completed"
         else
             echo "✗ $model training failed"
             failed_models+=("$model")
         fi
-        
+
         # 次のモデルまで少し待機
         sleep 5
     done
-    
+
     # 結果サマリー
     echo ""
     echo "=========================================="
@@ -129,7 +129,7 @@ train_all_models() {
     echo "Total models: ${#MODELS[@]}"
     echo "Successful: $((${#MODELS[@]} - ${#failed_models[@]}))"
     echo "Failed: ${#failed_models[@]}"
-    
+
     if [ ${#failed_models[@]} -gt 0 ]; then
         echo ""
         echo "Failed models:"
@@ -145,7 +145,7 @@ main() {
         show_usage
         return 1
     fi
-    
+
     case "$1" in
         "list")
             list_models

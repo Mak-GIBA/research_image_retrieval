@@ -49,8 +49,8 @@ def extract_vectors(net, loader, ms=[1], device=torch.device('cuda'), print_freq
 
 
 def get_root():
-    return os.path.join('/scratch/rw5/zz1363/spca-main/')
-    # return os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+    # return os.path.join('/scratch/rw5/zz1363/spca-main/')
+    return os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
 
 def get_data_root():

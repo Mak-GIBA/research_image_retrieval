@@ -24,7 +24,7 @@ import torchvision.transforms as transforms
 # from torch.utils.tensorboard import SummaryWriter
 
 from config import get_args
-from dataset import ImageFromList, GLDv2_imdb
+from dataset import ImageFromList, GLDv2_lmdb
 from networks import Token, SpCa
 from utils import MetricLogger, create_optimizer, init_distributed_mode, is_main_process
 from utils import compute_map_and_print, extract_vectors
@@ -168,11 +168,7 @@ class DOLGNetWrapper(nn.Module):
     DOLGNetモデルをSPCA学習フレームワークに適合させるためのラッパー
     """
     def __init__(self, num_classes, backbone='resnet50', local_dim=1024, global_dim=2048,
-                 pretrained=True,
-                 local_dim=local_dim,
-                 global_dim=global_dim,
-                 output_dim=output_dim,
-                 num_classes=num_classes
+                 pretrained=True, output_dim=512
                  ):
         super(DOLGNetWrapper, self).__init__()
         self.backbone = create_dolg_model(
@@ -340,8 +336,7 @@ def main(args):
         print(f'>> batch_size per node: {args.batch_size}')
 
     # データセット作成
-    train_dataset, val_dataset, class_num = GLDv2_imdb(args.imsize, args.seed,
-                                                       args.classifier_num = class_num)
+    train_dataset, val_dataset, class_num = GLDv2_lmdb(args.imsize, args.seed)
 
     if args.distributed:
         train_sampler = DistributedSampler(train_dataset)
